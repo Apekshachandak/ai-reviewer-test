@@ -6,11 +6,15 @@ def save_to_database(data):
     return True
 
 # Function B (The middle layer)
-def register_user(username, age):
+def register_user(username, age, email=None):
     if age < 18:
         return "Too young"
     
-    # Notice it calls the bottom layer!
+    # WE ARE ADDING NEW COMPLEXITY HERE
+    if email is not None:
+        if "@" not in email:
+            return "Invalid email"
+    
     success = save_to_database(username)
     return success
 
