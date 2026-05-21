@@ -1,5 +1,5 @@
 def clean_user_input(text_string):
-    text_string = text_string.strip()
+    text_string = text_string.strip() #hello
     text_string = text_string.lower()
     return text_string.replace(" ", "_")
 
