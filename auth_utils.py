@@ -1,4 +1,5 @@
 def hash_password(password):
+    #security update
     import hashlib
     salt = "fixed_salt_v1"
     combined = password + salt
