@@ -1,6 +1,7 @@
 # 1. SQL Injection 
 def get_user(username):
     #testing
+    #testing2
     query = "SELECT * FROM users WHERE username = '" + username + "'"
     cursor.execute(query)
     return cursor.fetchone()
