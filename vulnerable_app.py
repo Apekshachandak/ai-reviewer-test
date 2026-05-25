@@ -9,6 +9,7 @@ def get_user(username):
 # 2. Command Injection 
 def check_host(hostname):
     #testing
+    #end to end
     import os
     os.system("ping -c 1 " + hostname)
 
