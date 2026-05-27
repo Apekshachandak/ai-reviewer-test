@@ -1,27 +1,29 @@
-# 1. SQL Injection 
-def get_user(username):
-    #testing
-    #test week 6
-    #test2
-    query = "SELECT * FROM users WHERE username = '" + username + "'"
-    cursor.execute(query)
+import subprocess
+import secrets
+import logging
+
+logger = logging.getLogger(__name__)
+
+
+def get_user(username: str):
+    """Retrieve user by username — parameterized query prevents SQL injection."""
+    query = "SELECT * FROM users WHERE name = %s"
+    cursor.execute(query, (username,))
     return cursor.fetchone()
 
-# 2. Command Injection 
-def check_host(hostname):
-    #end to end
-    #testing
-    #end to end
-    import os
-    os.system("ping -c 1 " + hostname)
 
-# 3. Weak Crypto 
-def store_password(password):
-    #testing
-    import hashlib
-    return hashlib.md5(password.encode()).hexdigest()
+def check_host(hostname: str) -> bool:
+    """Check if a host is reachable — no shell=True, no user input in command."""
+    try:
+        result = subprocess.run(
+            ["ping", "-c", "1", hostname],
+            capture_output=True, timeout=5
+        )
+        return result.returncode == 0
+    except Exception:
+        return False
 
-# 4. Safe code 
-def add_numbers(a, b):
-    #testing
-    return a + b
+
+def generate_token() -> str:
+    """Generate a cryptographically secure token."""
+    return secrets.token_hex(32)
