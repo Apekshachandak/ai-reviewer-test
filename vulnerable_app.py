@@ -10,6 +10,7 @@ def get_user(username):
 def check_host(hostname):
     #end to end
     #testing
+    #end to end
     import os
     os.system("ping -c 1 " + hostname)
 
