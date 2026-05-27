@@ -3,6 +3,7 @@ def get_user(username):
     #testing
     #test week 6
     #test2
+    print("password")
     query = "SELECT * FROM users WHERE username = '" + username + "'"
     cursor.execute(query)
     return cursor.fetchone()
