@@ -1,11 +1,9 @@
 # 1. SQL Injection 
 def get_user(username):
-    #testing
-    #test week 6
-    #test2
-    query = "SELECT * FROM users WHERE username = '" + username + "'"
-    cursor.execute(query)
+    # safe parameterized query
+    cursor.execute("SELECT * FROM users WHERE name=%s", (username,))
     return cursor.fetchone()
+
 
 # 2. Command Injection 
 def check_host(hostname):
