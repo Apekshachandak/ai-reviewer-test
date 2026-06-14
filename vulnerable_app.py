@@ -4,6 +4,7 @@ def get_user(username):
     #test week 6
     #test2
     query = "SELECT * FROM users WHERE username = '" + username + "'"
+    #test week 6
     cursor.execute(query)
     return cursor.fetchone()
 
